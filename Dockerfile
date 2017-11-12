@@ -1,5 +1,5 @@
 # Stage 1. Building. 
-FROM microsoft/aspnetcore-build
+FROM microsoft/aspnetcore-build:2.0.2
 WORKDIR /source
 
 # caches restore result by copying csproj file separately
