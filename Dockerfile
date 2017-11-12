@@ -31,4 +31,4 @@ ENV ASPNETCORE_URLS http://*:5000
 
 # Stage 2. Running the application
 WORKDIR /out
-ENTRYPOINT ["dotnet", "<APP_NAME>.dll"]
+ENTRYPOINT ["dotnet", "aspnet-linux-edition.dll"]
