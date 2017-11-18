@@ -1,16 +1,16 @@
 # Stage 1. Building. 
-FROM microsoft/aspnetcore-build:2.0.2
-WORKDIR /source
+FROM microsoft/aspnetcore:2.0
+WORKDIR /out
 
 # caches restore result by copying csproj file separately
 # copies project files into the /source/ of the container.
-COPY *.csproj . 
+# COPY *.csproj . 
 
 # Restore dotnet dependencies
-RUN dotnet restore
+# RUN dotnet restore
 
 # copies the rest of your code into /source/
-COPY . .
+# COPY . .
 
 # microsoft/aspnetcore-build image contains Node
 # so may also run npm install
@@ -19,7 +19,7 @@ COPY . .
 # RUN npm run build
 
 # Builds to /out in the root of the container
-RUN dotnet publish --output /out/ --configuration Release
+# RUN dotnet publish --output /out/ --configuration Release
 
 # Set environment variables for container
 # Dokku maps external port 80 to internal port 5000
@@ -29,6 +29,8 @@ RUN dotnet publish --output /out/ --configuration Release
 # to listen on port 80
 ENV ASPNETCORE_URLS http://*:5000
 
+COPY . .
+
 # Stage 2. Running the application
-WORKDIR /out
+# WORKDIR /out
 ENTRYPOINT ["dotnet", "aspnet-linux-edition.dll"]
