@@ -1,5 +1,5 @@
 # Stage 1. Building. 
-FROM microsoft/aspnetcore:2.0
+FROM microsoft/aspnetcore:2.0-jessie
 WORKDIR /out
 
 # caches restore result by copying csproj file separately
